@@ -20,7 +20,7 @@ jobs:
         run: bad_echo "The time was ${{ steps.hello.outputs.time }}"
       # Send notifications to Slack
       - name: Report Status
-        if: always()
+        if: ${{ always() && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main') }}
         uses: ravsamhq/notify-slack-action@v1
         with:
 #          status: ${{ job.status }}
@@ -30,7 +30,7 @@ jobs:
            notification_title: '{workflow} has {status_message}'
            message_format: '{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>'
            footer: 'Linked to Repo <{repo_url}|{repo}>'
-           mention_users: 'UCCNA192L'
+           mention_groups: 'C02LBSQN6FL'
            mention_users_when: 'failure,warnings'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
