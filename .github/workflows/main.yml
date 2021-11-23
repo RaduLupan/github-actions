@@ -30,7 +30,7 @@ jobs:
            notification_title: '{workflow} has {status_message}'
            message_format: '{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>'
            footer: 'Linked to Repo <{repo_url}|{repo}>'
-           mention_users: 'UCCNA192L'
+           mention_groups: 'C02LBSQN6FL'
            mention_users_when: 'failure,warnings'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
